@@ -1,0 +1,188 @@
+{% extends "home/base.html" %}
+
+{% load static %}
+{% block content %}
+<section class="section job-hero-section bg-light pb-0" id="hero">
+    <div class="container">
+        <div class="row">
+
+            
+            <div class=" card card-body">
+
+                <div class="row mb-3">
+                    <h4 class="mb-sm-0 mb-3">My jobs list</h4>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="search-box pt-2">
+                            <input type="text" class="form-control search" id="searchInput" onkeyup="searchTable()"
+                                placeholder="Search for Jobs" fdprocessedid="fxsqvg" />
+                            <i class="ri-search-line search-icon pt-2"></i>
+                        </div>
+                    </div>
+                    <div class="col-sm d-flex justify-content-end">
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalgrid">
+                            <i class="ri-add-circle-fill align-middle me-1"></i> Add Job
+                        </button>
+                    </div>
+                </div>
+
+
+                <div class="row mt-4">
+                    <div class="table-responsive ">
+                        {% if departments %}
+                        <table class="table table-hover" id="myTable">
+                            <thead class="table-light text-text-muted">
+                                <th style="width: 70px;">Sl. No.</th>
+                                <th>Name</th>
+                                <th>Organization</th>
+                                <th>POC 1</th>
+                                <th>POC 2</th>
+                                <th>Description</th>
+                                <th class="text-center">Status</th>
+                                {% if request.session.access_control.user_management.department.add or request.session.access_control.user_management.department.delete_access or request.user.is_superuser %}
+                                <th class="text-center">Action</th>
+                                {% endif %}
+
+                            </thead>
+                            <tbody >
+                                {% for dept in departments %}
+                                <tr>
+                                    <td>{{ forloop.counter}}</td >
+                                    <td>{{dept.name}}</td>
+                                    <td>{{dept.organization.name | capfirst}}</td>
+                                    <td>poc teat 1</td>
+                                    <td>poc test 2</td>
+                                    <td class=" text-break">{{dept.description}}</td>
+                                    <td class="text-center">
+                                        {% if dept.status == 'Activate' %}
+                                        <span class="badge rounded-pill badge-soft-success"
+                                            style="width:100px;font-size: 12px;">Active</span>
+                                        {% else %}
+                                        <span class="badge rounded-pill badge-soft-danger"
+                                            style="width:100px;font-size: 12px;">Inactive</span>
+                                        {% endif %}
+                                    </td>
+                                    <td class="text-center align-items-center justify-content-center" style="display: flex !important;">
+                                        
+                                        {% if request.session.access_control.user_management.department.add or request.user.is_superuser %}
+                                            <a href="#editdeptModal{{dept.id}}" class="btn btn-light page-title-right btn-sm me-2 d-block" id="editBtn" data-bs-toggle="modal" data-bs-target="" >
+                                                <i class="ri-pencil-fill align-bottom me-1"></i>
+                                            </a> 
+                                        {% endif %}
+
+                                        
+                                        {% if request.session.access_control.user_management.department.delete_access or request.user.is_superuser %}
+                                            <a class="text-danger d-inline-block remove-item-btn" data-bs-toggle="modal" href="#deleteOrder{{dept.id}}">
+                                                <i class="ri-delete-bin-5-fill fs-16"></i>
+                                            </a>
+                                        {% endif %}
+                                            
+                                    </td>
+                                    {% comment %} <td><button class="btn btn-sm btn-soft-info"><i class=" ri-edit-line"></i>
+                                            &nbsp; Edit</button></td> {% endcomment %}
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        {% else %}
+                        <table class="table table-hover" id="myTable">
+                            <thead class="table-light text-text-muted">
+                                <th style="width: 70px;">Sl. No.</th>
+                                <th>Name</th>
+                                <th>Organization</th>
+                                <th>POC 1</th>
+                                <th>POC 2</th>
+                                <th>Description</th>
+                                <th class="text-center">Status</th>
+                                <th class="text-center">Action</th>
+                            </thead>
+                        
+                        </table>
+                        <div class="noresult mt-5">
+                            <div class="text-center">
+                            <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop"
+                                colors="primary:#405189,secondary:#0ab39c" style="width: 75px; height: 75px"></lord-icon>
+                            <h5 class="mt-2">Sorry! No Jobs found</h5>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+</section>
+
+
+
+<!-- Modal For Adding new -->
+<!-- Grids in modals -->
+<div class="modal fade" id="exampleModalgrid" tabindex="-1" aria-labelledby="exampleModalgridLabel" aria-modal="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalgridLabel">Add JOb</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="row g-3">
+                        <div class="col-xxl-6">
+                            <label for="firstName" class="form-label">Job Name<small class="text-danger">*</small></label>
+                            <input class="form-control" type="text" name="job_name" id="job_name" required>
+                        </div> <!--end col-->
+
+                        <div class="col-xxl-6">
+                            <label for="firstName" class="form-label">Industry type<small class="text-danger">*</small></label>
+                            <input class="form-control" type="text" name="industry_type" id="industry_type" required>
+                        </div> <!--end col-->
+
+                        <div class="col-xxl-6">
+                            <label for="firstName" class="form-label">Experience required<small class="text-danger">*</small></label>
+                            <input class="form-control" type="text" name="experience_required" id="experience_required" required>
+                        </div> <!--end col-->
+
+                        
+                        <div class="col-xxl-6">
+                            <label for="firstName" class="form-label">Qualification<small class="text-danger">*</small></label>
+                            <input class="form-control" type="number" name="Qualification" id="number_of_opening" required>
+                        </div> <!--end col-->
+
+                        <div class="col-xxl-6">
+                            <label for="firstName" class="form-label">Job location<small class="text-danger">*</small></label>
+                            <input class="form-control" type="number" name="job_location" id="number_of_opening" required>
+                        </div> <!--end col-->
+
+                        <div class="col-xxl-6">
+                            <label for="firstName" class="form-label">Salary<small class="text-danger">*</small></label>
+                            <input class="form-control" type="number" name="job_location" id="number_of_opening" required>
+                        </div> <!--end col-->
+
+                        <div class="col-lg-12">
+                            <label for="description" class="form-label">Job Description</label>
+                            <textarea class="form-control" name="description" cols="70" rows="10"></textarea>
+                        </div><!--end col-->
+
+                        <div class="row g-3">
+                            <div class="col-lg-12">
+                                <div class="hstack gap-2 justify-content-end">
+                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                                    <button type="submit" class="btn btn-primary" id="add_dept_save_btn_id">Save</button>
+                                </div>
+                            </div><!--end col-->
+                        </div><!--end row-->
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock %}
