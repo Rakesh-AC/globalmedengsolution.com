@@ -41,7 +41,7 @@ INSTALLED_APPS = [
 
     # installed apps 
     'home',
-    'job_management'
+    'job_management',
 ]
 
 MIDDLEWARE = [

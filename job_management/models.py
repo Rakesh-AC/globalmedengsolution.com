@@ -3,9 +3,10 @@ from home.models import CompanyAccount
 # Create your models here.
 
 class Job(models.Model):
-    company = models.ForeignKey(CompanyAccount,null=True, blank=True,  on_delete=models.CASCADE)
+    # company = models.ForeignKey(CompanyAccount,null=True, blank=True,  on_delete=models.CASCADE)
+    company = models.CharField(max_length=200, default="")
     job_name = models.CharField( max_length=200, default="")
-    job_description = models.CharField(max_length=100, default="")
+    job_description = models.TextField( default="")
     salary = models.PositiveBigIntegerField()
     experience = models.CharField(max_length=50)
     qualification = models.CharField(max_length=50, default="Any")
