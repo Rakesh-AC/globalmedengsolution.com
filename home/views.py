@@ -90,3 +90,12 @@ def validate_email(request):
 def view_profile(request):
     return render(request, 'profile_management/view_profile.html')
 
+
+
+def contact_us(request):
+    if request.method == "POST":
+        print("---------------------")
+        print(request.POST)
+        print("---------------------")
+        return render(request,"contact/contact_us.html")
+    return render(request, "contact/contact_us.html")

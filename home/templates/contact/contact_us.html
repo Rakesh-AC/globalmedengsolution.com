@@ -1,0 +1,106 @@
+{% extends 'home/base.html' %}
+
+{% load static %}
+{% block content %}
+
+    <br><br><br><br>
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card">
+                <div class="bg-soft-warning position-relative">
+                    <div class="card-body p-5">
+                        <div class="text-center">
+                            <h3>Contact Us</h3>
+                        </div>
+                    </div>
+                    <div class="shape">
+                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="1440" height="60" preserveAspectRatio="none" viewBox="0 0 1440 60">
+                            <g mask="url(&quot;#SvgjsMask1001&quot;)" fill="none">
+                                <path d="M 0,4 C 144,13 432,48 720,49 C 1008,50 1296,17 1440,9L1440 60L0 60z" style="fill: var(--vz-card-bg-custom);"></path>
+                            </g>
+                            <defs>
+                                <mask id="SvgjsMask1001">
+                                    <rect width="1440" height="60" fill="#ffffff"></rect>
+                                </mask>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+                <div class="card-body p-4">
+                
+                    
+                    <div class="d-flex text-center">
+                    
+                        <div class="flex-grow-1 ">
+                            <h4>Let us Get in Touch </h4>
+                            <br><br>
+                        </div>
+
+                        
+                    </div>
+
+                    <div class="container">
+                        <div class="d-flex justify-content-start ml-5">
+                            <div class="flex-grow-1 text-left">
+                                <br>
+                                <p>There are several ways to contact us here at globalmedengsolution, and we are always more than happy to help with enquiries</p>
+                                <br>
+                                <h4>Email : &nbsp; <span class="text-muted">Contact@globalmedengsolution.com</span></h4>
+                                <h4>Mobile : &nbsp; <span class="text-muted">9900115737</span></h4>
+                                <h4>web : &nbsp; <span class="text-muted">www.globalmedengsolution.com</span></h4>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="d-flex text-center">
+                        <div class="flex-grow-1 ">
+                            <div class="card-body p-4">
+                               
+                                <div class="row p-2 mt-4 justify-content-center">
+                                    <div class="col-4">
+                                        <form class="" novalidate="" action="{% url 'contact_us' %}" method="post">
+                                            {% csrf_token %}
+                                            <div class="mb-3">
+                                                <label for="useremail" class="form-label">Name of company/person <span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="name"  placeholder="Enter name" required="">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="useremail" class="form-label">Email <span class="text-danger">*</span></label>
+                                                <input type="email" class="form-control" name="email" id="useremail" placeholder="Enter email address" required="">
+                                                <div class="invalid-feedback">
+                                                    Please enter email
+                                                </div>
+                                            </div>
+    
+                                            <div class="mb-3">
+                                                <label class="form-label" for="password-input">Message</label>
+                                                <textarea name="message" class="form-control" name="" id="" cols="30" rows="10"></textarea>
+                                            </div>
+                                          
+                                            <div class="mt-4">
+                                                <button class="btn btn-success w-100" type="submit">Send</button>
+                                            </div>
+    
+                                           
+                                        </form>
+    
+                                    </div>
+                                    
+                                   
+                                </div>
+                            </div>
+
+                           
+                        </div>
+
+                        
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

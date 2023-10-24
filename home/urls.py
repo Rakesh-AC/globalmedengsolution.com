@@ -19,6 +19,7 @@ urlpatterns = [
     #profile
     path('view-profile/', views.view_profile, name="view_profile"),
 
-    
+    #contact us page
+    path('contact-us/', views.contact_us, name="contact_us"),
 
 ]
