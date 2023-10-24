@@ -1,10 +1,187 @@
-{% extends "home/base.html" %}
-
-{% load static %}
-{% block content %}
-    <section class="section job-hero-section bg-light pb-0" id="hero">
-        <div class="container">
-
+{% extends "home/base.html" %} {% load static %} {% block content %}
+<section class="section job-hero-section bg-light pb-0" id="hero">
+  <div class="container-lg">
+    <div class="card w-100">
+      <div class="card-body">
+        <div class="row justify-content-center align-items-center">
+          <div class="col-md-3 text-center text-start">
+            <img
+              src="{% static 'assets/images/users/avatar-1.jpg' %}"
+              alt="user-avatar"
+              class="rounded-circle border border-primary"
+            />
+          </div>
+          <div class="col-md-9">
+            <h2>Rudresh A C</h2>
+            <p class="h5 text-muted">Junior Software Engineer</p>
+            <p class="text-start text-muted text-md-end">
+              Profile last Update - 21Oct,2023
+            </p>
+            <div class="row">
+              <div class="col-md-6 col-sm-12">
+                <p>
+                  <i class="ri-user-location-line"> </i>Bangalore/Bengaluru,
+                  INDIA
+                </p>
+                <p><i class="ri-suitcase-line"> </i> 1 year 2 Months</p>
+                <p><i class="ri-wallet-3-line"> </i> &#8377; 400000</p>
+              </div>
+              <div class="col-md-6 col-sm-12">
+                <p><i class="ri-phone-line"> </i>7090288967</p>
+                <p><i class="ri-mail-line"> </i>rudreshac967@gmail.com</p>
+                <p>
+                  <i class="ri-mail-line"> </i>15 Days or less notice period
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 d-none d-md-block">
+        <div class="card w-100">
+          <div class="card-body">
+            <h3>Quick links</h3>
+            <nav class="nav flex-column">
+              <a class="nav-link active" aria-current="page" href="#"
+                >Profile summary</a
+              >
+              <a class="nav-link" href="#">Personal details</a>
+              <a class="nav-link" href="#">Education</a>
+              <a class="nav-link" href="#">Key skills</a>
+              <a class="nav-link" href="#">Work Expercence</a>
+              <a class="nav-link" href="#">Resume</a>
+              <a
+                class="nav-link disabled"
+                href="#"
+                tabindex="-1"
+                aria-disabled="true"
+                >Disabled</a
+              >
+            </nav>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9 col-sm-12">
+        <div class="row">
+          <div class="card w-100">
+            <div class="card-body">
+              <h3>Profile summary</h3>
+              <p class="text-muted">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui
+                repellat voluptates nam debitis quam eum odit aut neque, vero,
+                repellendus corporis minus minima temporibus accusamus omnis
+                aspernatur. Quis, aliquid odio.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="card w-100">
+            <div class="card-body">
+              <h3>Personal details</h3>
+              <div class="row">
+                <div class="col-md-6 col-12">
+                  <p class="text-muted mb-0">Personal</p>
+                  <p class="text-bold">male,Single/Unmarried</p>
+                  <p class="text-muted mb-0">Address</p>
+                  <p class="text-bold">Add Address</p>
+                </div>
+                <div class="col-md-6 col-12">
+                  <p class="text-muted mb-0">Date of birth</p>
+                  <p class="text-bold">27 Mar 2001</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="card w-100">
+            <div class="card-body">
+              <h3>Education</h3>
+              <p class="mb-0 text-bold">B.Sc Computers</p>
+              <p class="mb-0">Bharathi College</p>
+              <p class="text-muted">2018-2021 | Full Time</p>
+
+              <p class="mb-0 text-bold">Class XII</p>
+              <p class="mb-0">Bharathi College</p>
+              <p class="text-muted">2018-2021 | Full Time</p>
+
+              <p class="mb-0 text-bold">Class XI</p>
+              <p class="mb-0">Bharathi College</p>
+              <p class="text-muted">2018-2021 | Full Time</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="card w-100">
+            <div class="card-body">
+              <h3>Key skills</h3>
+              <div>
+                <span class="badge border mx-2 border-primary text-primary"
+                  >Javascript</span
+                >
+                <span class="badge border mx-2 border-primary text-primary"
+                  >HTML</span
+                >
+                <span class="badge border mx-2 border-primary text-primary"
+                  >CSS</span
+                >
+                <span class="badge border mx-2 border-primary text-primary"
+                  >React</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="card w-10">
+            <div class="card-body">
+              <div class="row">
+                <h3>Work Expercence</h3>
+                <div class="col-md-6 col-12">
+                  <p class="text-muted mb-0">Current industry</p>
+                  <p class="text-bold">Add Current industry</p>
+                  <p class="text-muted mb-0">Desired job type</p>
+                  <p class="text-bold">Add Desired job type</p>
+                  <p class="text-muted mb-0">Preferred shift</p>
+                  <p class="text-bold">Add Preferred shift</p>
+                  <p class="text-muted mb-0">Expected salary</p>
+                  <p class="text-bold">₹7,00,000</p>
+                </div>
+                <div class="col-md-6 col-12">
+                  <p class="text-muted mb-0">Department</p>
+                  <p class="text-bold">Add Department</p>
+                  <p class="text-muted mb-0">Desired employment type</p>
+                  <p class="text-bold">Add desired employment type</p>
+                  <p class="text-muted mb-0">Preferred work location</p>
+                  <p class="text-bold">Bangalore/Bengaluru</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="card w-100">
+            <div class="card-body">
+              <h3>Resume</h3>
+              <p class="text-muted">
+                Resume is the most important document recruiters look for.
+                Recruiters generally do not look at profiles without resumes.
+              </p>
+              <p class="mb-0">Q Spider Resume 1.pdf (resume name)</p>
+              <p class="text-muted">Uploaded on Feb 16, 2022</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 {% endblock %}
